@@ -8,6 +8,7 @@ var recolor = document.getElementById('recolor')
 var rain = document.getElementById('rain')
 var random = document.getElementById('random')
 var discofy = document.getElementById('disco')
+var clear = document.getElementById('clear')
 var selected,
     requestId
 var squares = []
@@ -93,6 +94,8 @@ var stop = function() {
 
 drawBase();
 
+
+
 function checkSquare(x,y) {
   if (x >= 10 && x <=40 && y >= 10 && y <= 40) {
     return true
@@ -150,6 +153,19 @@ Circle.prototype.draw = function () {
   ctx.fill();
 }
 
+function randomShapes() {
+  for (var i = 0; i < 5; i++) {
+    var circle = new Circle(randomNumber(0,800),randomNumber(76,424),randomNumber(1,150),getRandomColor())
+    circle.draw()
+    squares.push(circle);
+    var square = new Square(randomNumber(0,800),randomNumber(76,424),randomNumber(1,150),getRandomColor())
+    square.draw()
+    squares.push(square);
+  }
+}
+
+randomShapes()
+
 
 canvas.addEventListener('click', function (e) {
   var x = e.x;
@@ -191,16 +207,7 @@ rain.addEventListener('click', function () {
   }
 })
 
-random.addEventListener('click', function () {
-  for (var i = 0; i < 5; i++) {
-    var circle = new Circle(randomNumber(0,800),randomNumber(76,424),randomNumber(1,150),getRandomColor())
-    circle.draw()
-    squares.push(circle);
-    var square = new Square(randomNumber(0,800),randomNumber(76,424),randomNumber(1,150),getRandomColor())
-    square.draw()
-    squares.push(square);
-  }
-})
+random.addEventListener('click', randomShapes)
 var seizure = false;
 var seizureId
 discofy.addEventListener('click', function () {
@@ -215,3 +222,8 @@ discofy.addEventListener('click', function () {
   }
 })
 
+clear.addEventListener('click', function () {
+  ctx.clearRect(0,0,800,500);
+  drawBase();
+  squares = [];
+})
