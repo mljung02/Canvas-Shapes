@@ -173,7 +173,7 @@ canvas.addEventListener('click', function (e) {
     var testy = new Circle(x,y,width.value,color.value);
     console.log(testy);
     testy.draw();
-    circles.push(testy);
+    squares.push(testy);
   }
 })
 
@@ -195,7 +195,7 @@ random.addEventListener('click', function () {
   for (var i = 0; i < 5; i++) {
     var circle = new Circle(randomNumber(0,800),randomNumber(76,424),randomNumber(1,150),getRandomColor())
     circle.draw()
-    circles.push(circle);
+    squares.push(circle);
     var square = new Square(randomNumber(0,800),randomNumber(76,424),randomNumber(1,150),getRandomColor())
     square.draw()
     squares.push(square);
@@ -211,7 +211,7 @@ discofy.addEventListener('click', function () {
   } else {
     clearInterval(seizureId)
     discofy.innerHTML = 'Seizure Mode'
-    seizure = !seizure
+    seizure = !seizure;
   }
 })
 
