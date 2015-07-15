@@ -29,14 +29,6 @@ var drawBase = function () {
   ctx.fillStyle = 'green';
   ctx.fill();
   ctx.strokeStyle = 'black'
-  ctx.setLineDash([1, 2]);
-  ctx.beginPath();
-  ctx.moveTo(9,55);
-  ctx.lineTo(40,55);
-  ctx.lineTo(40,85);
-  ctx.lineTo(9,85);
-  ctx.lineTo(9,55);
-  ctx.stroke()
 };
 
 function randomNumber(min,max) {
