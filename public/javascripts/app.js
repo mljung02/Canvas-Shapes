@@ -57,16 +57,22 @@ function rainLoop () {
     if (squares[i].y > 500 - squares[i].width/2 || squares[i].y < 0 + squares[i].width/2){
       squares[i].direction *= -1
     }
+    if (squares[i].x > 800 - squares[i].width/2 || squares[i].x < 0 + squares[i].width/2){
+      squares[i].directionx *= -1
+    }
+
     squares[i].y += (1/squares[i].width)*squares[i].direction*50
+    squares[i].x += (1/squares[i].width)*squares[i].directionx*50
+    ctx.globalAlpha = i/squares.length
     squares[i].draw()
   }
-  for (var i = 0; i < circles.length; i++) {
-    if (circles[i].y > 500 - circles[i].width/2 || circles[i].y < 0 + circles[i].width/2){
-      circles[i].direction *= -1
-    }
-    circles[i].y += (1/circles[i].width)*circles[i].direction*50
-    circles[i].draw()
-  }
+  // for (var i = 0; i < circles.length; i++) {
+  //   if (circles[i].y > 500 - circles[i].width/2 || circles[i].y < 0 + circles[i].width/2){
+  //     circles[i].direction *= -1
+  //   }
+  //   circles[i].y += (1/circles[i].width)*circles[i].direction*50
+  //   circles[i].draw()
+  // }
   requestId = window.requestAnimationFrame(rainLoop, canvas);
 }
 
@@ -110,6 +116,7 @@ function getRandomColor() {
 }
 
 function Shape(x, y, width, color) {
+  this.directionx = 1;
   this.direction = 1;
   this.x = x;
   this.y = y;
